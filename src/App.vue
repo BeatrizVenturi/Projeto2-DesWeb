@@ -4,10 +4,10 @@ import { ref } from 'vue'
 
 
 const listaCompras = ref([
-  {
+  { 
     id: 1,
-    nome: 'Camiseta',
-    preco: 49.90,
+    nome: 'Champion Sports Bola de basquete de nylon resistente oficial',
+    preco: 107.60,
     quantidade: 0,
   },
   {
@@ -93,42 +93,51 @@ function carrinho(index) {
 </script>
 
 <template>
-  <div class="produtos">
-    <ul>
-      <li class="lista" v-for="(item, index) in listaCompras" :key="item.id">
-        <p> Item: {{ item.nome }} <br>
-          Preco: {{ item.preco }} <br>
-          ID: {{ item.id }} <br>
-          quantidade: {{ item.quantidade }}
-          <button @click="incrementar(index)">+</button>
-          <button @click="decrementar(index)">-</button>
-          <button @click="adicionar(index)">Adicionar</button>
-        </p>
-      </li>
-    </ul>
-    <hr>
+  <div class="titulo">
+    <h1>Bolas.com</h1>
   </div>
 
+  <div class="produtos">
+    <div class="lista" v-for="(item, index) in listaCompras" :key="item.id">
+      <p> {{ item.nome }} <br>
+        Preco: {{ item.preco }} <br>
+        ID: {{ item.id }} <br>
+        quantidade: {{ item.quantidade }} <br>
+        <button @click="incrementar(index)">+</button>
+        <button @click="decrementar(index)">-</button>
+        <button @click="adicionar(index)">Adicionar</button>
+      </p>
+    </div>
+  
+  </div>
+  <hr>
+
   <div class="carrinho">
-    <ul>
 
-      <li v-for="item in carrinhos.items">
-        <p>Item: {{ item.nome }} <br>
-          Preco: {{ item.preco.toFixed(2) }} <br>
-          ID: {{ item.id }} <br>
-          Quantidade: {{ item.quantidade }} <br>
-          <button @click="RemoverCarrinho">Remover</button>
-        </p>
-      </li>
-      <p> Total:{{ carrinhos.total.toFixed(2) }}</p>
+    <div class="" v-for="item in carrinhos.items">
+      <p>Item: {{ item.nome }} <br>
+        Preco: {{ item.preco.toFixed(2) }} <br>
+        ID: {{ item.id }} <br>
+        Quantidade: {{ item.quantidade }} <br>
+        <button @click="RemoverCarrinho">Remover</button>
+      </p>
 
-
-    </ul>
+    </div>
+    <p> Total:{{ carrinhos.total.toFixed(2) }}</p>
   </div>
 </template>
 
 <style scoped>
-.carrinho {
-  padding-bottom: 10px;
+.titulo {
+  text-align: center;
+  padding-bottom: 40px;
 }
+.produtos{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  text-align: center;
+
+}
+.carrinho {}
 </style>
